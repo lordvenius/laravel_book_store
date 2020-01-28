@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\BuyController;
+use App\Http\Controllers\ClearController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,15 +24,9 @@ Route::get('/search', function () {
 
 Route::get("/result", "SearchController@searchBooks");
 
-Route::get('/buy', function () {
-    return view('buy');
-    
-});
+Route::get('/buy', "BuyController@orderList");
 
-Route::get('/clear', function () {
-    return view('clear');
-    
-});
+Route::get('/clear', "ClearController@clearOrders");
 
 Route::get('/add', function() {
     

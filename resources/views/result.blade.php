@@ -11,6 +11,7 @@
         <td>Price</td>
         <td>Amount</td>
     </tr>
+    
     <form method="get" action="/add">
     @foreach ($books as $book)
         <tr>

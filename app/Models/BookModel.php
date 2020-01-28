@@ -7,5 +7,12 @@ class BookModel {
         $books = DB::table("books")->get();
         return $books;
     }
+
+    public function getBooks($itemId) {
+        $orderedBook = DB::table("books")->where("bookId", "=", $itemId)->get();
+        return $orderedBook;
+    }
 }
+
+
 ?>
