@@ -11,25 +11,26 @@
         <td>Author</td>
         <td>Title</td>
         <td>Price</td>
-        <td>Number</td>
+        <td>Amount</td>
         <td>Sum</td>
     </tr>
-    <form method="get" action="/orders">
+    @foreach ($books as $book)
         <tr>
-        @foreach ($books as $book)
-            <td>{{$book->id}}</td>
-            <td>{{$book->author}}</td>
-            <td>{{$book->title}}</td>
-            <td>{{$book->price}}</td>
-            <td>{{$book->number}}</td>
-            <td></td>
-        @endforeach
+        
+            <td>{{$book["bookId"]}}</td>
+            <td>{{$book["author"]}}</td>
+            <td>{{$book["title"]}}</td>
+            <td>{{$book["price"]}}</td>
+            <td>{{$book["amount"]}}</td>
+            <td>{{$book["amountPrice"]}}</td>
+        
         </tr>
+    @endforeach
         <tr>
             <td colspan="5">Total sum:</td>
-            <td></td>
+            <td>{{$orderPrice}}</td>
         </tr>
-    </form>
+    
     <tr>
         <form action="/">
             <td colspan="6">

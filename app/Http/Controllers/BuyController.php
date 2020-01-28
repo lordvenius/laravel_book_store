@@ -13,38 +13,52 @@ class BuyController extends Controller {
 
         
 
-        $array = (array) $orderItems;
+        
 
         
         
         $newIdArray = [];
         $newAmountArray = [];
         $fullOrderList = [];
+        $orderPrice = 0;
 
-        for ($i = 0; $i <= count($array); $i++) {
+        for ($i = 0; $i < count($orderItems); $i++) {
             $itemArray = (array) $orderItems[$i];
             $itemId = $itemArray["bookId"];
             $amount = $itemArray["amount"];
             //array_push($newIdArray, $itemIds);
             //array_push($newAmountArray, $amounts);
 
-            $book = $bookModel->getBooks($itemId);
+            $bookArray = $bookModel->getBooks($itemId);
 
-            $book["amount"] = $amount;
-
-            array_push($fullOrderList, $book);
+            $book = $bookArray[0];
+            $amountPrice = $book->price * $amount;
             
+            
+            $newBook = ["bookId" => $itemId, "author" => $book->author, "title" => $book->title, "price" => $book->price, "amount" => $amount, "amountPrice" => $amountPrice];
+
+
+            array_push($fullOrderList, $newBook);
+
+            $orderPrice += $amountPrice;
+
 
         }      
+
         
-        $newOrderArray = (array) $fullOrderList[0];
+
+        $orderPriceBlade = ["orderPrice" => $orderPrice];
+        
+
+
         
         
-        print_r($newOrderArray);
+        $properties = ["books" => $fullOrderList, "orderPrice" => $orderPrice];
+        
         
 
         
-        return view("buy");
+        return view("buy", $properties);
     }    
 }
 

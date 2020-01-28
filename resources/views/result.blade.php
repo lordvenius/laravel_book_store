@@ -16,11 +16,11 @@
     @foreach ($books as $book)
         <tr>
         
-            <td><input type="text" name="bookId" readonly value="{{$book->bookId}}"></td>
+            <td><input type="text" name="{{$book->bookId}}" readonly value="{{$book->bookId}}"></td>
             <td>{{$book->author}}</td>
             <td>{{$book->title}}</td>
             <td>{{$book->price}}</td>
-            <td><input type="number" name="quantity" min="0" max="5" default="0"></td>
+            <td><input type="number" name="{{$book->bookId}}q" min="0" max="5" default="0"></td>
         
         </tr>
     @endforeach
