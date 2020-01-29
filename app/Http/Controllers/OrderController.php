@@ -7,12 +7,17 @@ use App\Models\OrderModel;
 class OrderController extends Controller {
     public function addOrder($form) {
         
+        $orderArray = array_values($form);
+        print_r($orderArray);
         $length = count($form) / 2;
-       
-        for ($i = 1; $i <= $length; $i++) {
+        print_r($length);
+        print_r($orderArray[1]);
 
-            $id = $form[$i];         
-            $amount = $form[$id . "q"];
+
+        for ($i = 0; $i <= $length; $i+=2) {
+
+            $id = $orderArray[$i];
+            $amount = $orderArray[$i +1];
 
             if ($amount || $amount != 0) {
                 $orderModel = new OrderModel;
