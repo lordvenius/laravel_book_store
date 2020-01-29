@@ -8,7 +8,7 @@
         <tr>
             <td>Name:</td>
             <td>
-                <input type="text" name="name">
+                <input type="text" name="author">
             </td>
         </tr>
         <tr>

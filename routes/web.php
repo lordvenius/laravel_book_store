@@ -22,7 +22,14 @@ Route::get('/search', function () {
     
 });
 
-Route::get("/result", "SearchController@searchBooks");
+Route::get('/result', function() {
+    
+    $form = Request::all();
+    $controller = new SearchController;
+    return $controller->searchBooks($form);
+});  
+
+//Route::get("/result", "SearchController@searchBooks");
 
 Route::get('/buy', "BuyController@orderList");
 
